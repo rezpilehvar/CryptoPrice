@@ -13,6 +13,8 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -27,6 +29,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs = ['-Xjvm-default=compatibility']
     }
 }
 
@@ -36,9 +39,15 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
     kapt 'com.uber.rib:rib-compiler-test:0.11.3'
     implementation 'com.uber.rib:rib-android:0.11.3'
     testImplementation 'com.uber.rib:rib-test:0.11.3'
+
+    implementation 'com.google.dagger:dagger:2.34'
+    kapt 'com.google.dagger:dagger-compiler:2.34'
 }
