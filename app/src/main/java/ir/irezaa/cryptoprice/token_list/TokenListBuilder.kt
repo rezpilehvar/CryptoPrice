@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.uber.rib.core.ViewBuilder
 import ir.irezaa.cryptoprice.token_list.di.component.DaggerTokenListComponent
+import ir.irezaa.cryptoprice.token_list.view.TokenListView
+import retrofit2.Retrofit
 
 
 class TokenListBuilder(dependency: ParentComponent) : ViewBuilder<TokenListView, TokenListRouter, TokenListBuilder.ParentComponent>(dependency) {
@@ -24,7 +26,9 @@ class TokenListBuilder(dependency: ParentComponent) : ViewBuilder<TokenListView,
     return TokenListView(inflater.context)
   }
 
-  interface ParentComponent
+  interface ParentComponent {
+      fun getRetrofit() : Retrofit
+  }
 
   interface BuilderComponent {
     fun tokenListRouter(): TokenListRouter

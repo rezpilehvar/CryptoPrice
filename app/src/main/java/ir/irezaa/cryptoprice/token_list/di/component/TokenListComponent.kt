@@ -6,13 +6,15 @@ import ir.irezaa.cryptoprice.token_list.di.scope.TokenListScope
 import dagger.Component
 import ir.irezaa.cryptoprice.token_list.TokenListBuilder
 import ir.irezaa.cryptoprice.token_list.TokenListInteractor
-import ir.irezaa.cryptoprice.token_list.TokenListView
+import ir.irezaa.cryptoprice.token_list.di.module.TokenListDataModule
+import ir.irezaa.cryptoprice.token_list.view.TokenListView
 import ir.irezaa.cryptoprice.token_list.di.module.TokenListModule
 
 @TokenListScope
 @Component(
     modules = [
-        TokenListModule::class
+        TokenListModule::class,
+        TokenListDataModule::class
     ],
     dependencies = [
         TokenListBuilder.ParentComponent::class

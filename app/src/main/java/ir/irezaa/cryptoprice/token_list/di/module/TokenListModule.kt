@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 import ir.irezaa.cryptoprice.token_list.TokenListInteractor
 import ir.irezaa.cryptoprice.token_list.TokenListRouter
-import ir.irezaa.cryptoprice.token_list.TokenListView
+import ir.irezaa.cryptoprice.token_list.view.TokenListView
 import ir.irezaa.cryptoprice.token_list.di.component.TokenListComponent
 import ir.irezaa.cryptoprice.token_list.di.scope.TokenListScope
 
@@ -21,7 +21,6 @@ internal abstract class TokenListModule {
 
         @TokenListScope
         @Provides
-        @JvmStatic
         internal fun router(
             component: TokenListComponent,
             view: TokenListView,
