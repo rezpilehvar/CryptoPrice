@@ -2,7 +2,8 @@ package ir.irezaa.cryptoprice.di.component
 
 import dagger.Component
 import ir.irezaa.cryptoprice.di.module.NetworkModule
-import ir.irezaa.cryptoprice.token_list.TokenListBuilder
+import ir.irezaa.cryptoprice.root.RootBuilder
+import ir.irezaa.cryptoprice.root.token.list.TokenListBuilder
 import javax.inject.Singleton
 
 @Singleton
@@ -11,4 +12,4 @@ import javax.inject.Singleton
         NetworkModule::class
     ]
 )
-interface ApplicationComponent : TokenListBuilder.ParentComponent
+interface ApplicationComponent : RootBuilder.ParentComponent
