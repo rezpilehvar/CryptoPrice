@@ -6,6 +6,7 @@ import com.uber.rib.core.RibInteractor
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import ir.irezaa.cryptoprice.root.ToolbarTitleUpdater
+import ir.irezaa.cryptoprice.root.ToolbarTitleUpdaterSource
 import javax.inject.Inject
 
 @RibInteractor
@@ -17,14 +18,14 @@ class ToolbarInteractor : Interactor<ToolbarInteractor.ToolbarPresenter, Toolbar
     lateinit var presenter: ToolbarPresenter
 
     @Inject
-    lateinit var toolbarTitleUpdater: ToolbarTitleUpdater
+    lateinit var toolbarTitleUpdaterSource: ToolbarTitleUpdaterSource
 
     override fun didBecomeActive(savedInstanceState: Bundle?) {
         super.didBecomeActive(savedInstanceState)
         presenter.setTitle("test")
 
         disposables.add(
-            toolbarTitleUpdater
+            toolbarTitleUpdaterSource
                 .title
                 .subscribeBy {
                     presenter.setTitle(it)

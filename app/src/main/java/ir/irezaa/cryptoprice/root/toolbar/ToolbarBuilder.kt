@@ -9,6 +9,7 @@ import dagger.BindsInstance
 import dagger.Provides
 import ir.irezaa.cryptoprice.R
 import ir.irezaa.cryptoprice.root.ToolbarTitleUpdater
+import ir.irezaa.cryptoprice.root.ToolbarTitleUpdaterSource
 import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy.CLASS
 import javax.inject.Qualifier
@@ -34,7 +35,7 @@ class ToolbarBuilder(dependency: ParentComponent) :
     }
 
     interface ParentComponent {
-        fun toolbarTitleUpdater() : ToolbarTitleUpdater
+        fun toolbarTitleUpdaterSource() : ToolbarTitleUpdaterSource
     }
 
     @dagger.Module

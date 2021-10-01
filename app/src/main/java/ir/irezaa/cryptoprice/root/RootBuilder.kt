@@ -45,6 +45,20 @@ class RootBuilder(dependency: ParentComponent) :
         @Binds
         internal abstract fun presenter(view: RootView): RootInteractor.RootPresenter
 
+        @RootScope
+        @Binds
+        internal abstract fun bindToolbarTitleUpdaterImpAsToolbarTitleUpdater(
+            toolbarTitleUpdaterImp
+            : ToolbarTitleUpdaterImp
+        ): ToolbarTitleUpdater
+
+        @RootScope
+        @Binds
+        internal abstract fun bindToolbarTitleUpdaterImpAsToolbarTitleUpdaterSource(
+            toolbarTitleUpdaterImp
+            : ToolbarTitleUpdaterImp
+        ): ToolbarTitleUpdaterSource
+
         @dagger.Module
         companion object {
 
@@ -63,12 +77,6 @@ class RootBuilder(dependency: ParentComponent) :
                     ToolbarBuilder(component),
                     TokenBuilder(component)
                 )
-            }
-
-            @RootScope
-            @Provides
-            internal fun provideToolbarTitleUpdater() : ToolbarTitleUpdater {
-                return ToolbarTitleUpdater()
             }
         }
     }

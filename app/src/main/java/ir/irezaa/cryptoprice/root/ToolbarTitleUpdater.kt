@@ -1,10 +1,21 @@
 package ir.irezaa.cryptoprice.root
 
 import com.jakewharton.rxrelay2.BehaviorRelay
+import com.jakewharton.rxrelay2.Relay
+import javax.inject.Inject
 
 
-class ToolbarTitleUpdater {
-    val title = BehaviorRelay.createDefault("").toSerialized()
+interface ToolbarTitleUpdaterSource {
+    var title: Relay<String>
+}
 
-    fun updateTitle(title: String) = this.title.accept(title)
+interface ToolbarTitleUpdater {
+    fun updateTitle(title: String)
+}
+
+@RootBuilder.RootScope
+class ToolbarTitleUpdaterImp @Inject constructor() : ToolbarTitleUpdaterSource, ToolbarTitleUpdater {
+    override var title = BehaviorRelay.createDefault("").toSerialized()
+
+    override fun updateTitle(title: String) = this.title.accept(title)
 }
