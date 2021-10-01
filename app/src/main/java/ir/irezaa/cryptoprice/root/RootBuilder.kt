@@ -8,6 +8,7 @@ import dagger.Binds
 import dagger.BindsInstance
 import dagger.Provides
 import ir.irezaa.cryptoprice.root.token.TokenBuilder
+import ir.irezaa.cryptoprice.root.toolbar.ToolbarBuilder
 import retrofit2.Retrofit
 import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy.CLASS
@@ -55,7 +56,19 @@ class RootBuilder(dependency: ParentComponent) :
                 view: RootView,
                 interactor: RootInteractor
             ): RootRouter {
-                return RootRouter(view, interactor, component, TokenBuilder(component))
+                return RootRouter(
+                    view,
+                    interactor,
+                    component,
+                    ToolbarBuilder(component),
+                    TokenBuilder(component)
+                )
+            }
+
+            @RootScope
+            @Provides
+            internal fun provideToolbarTitleUpdater() : ToolbarTitleUpdater {
+                return ToolbarTitleUpdater()
             }
         }
     }
@@ -66,7 +79,7 @@ class RootBuilder(dependency: ParentComponent) :
         dependencies = [ParentComponent::class]
     )
     interface Component : InteractorBaseComponent<RootInteractor>, BuilderComponent,
-        TokenBuilder.ParentComponent {
+        TokenBuilder.ParentComponent, ToolbarBuilder.ParentComponent {
 
         @dagger.Component.Builder
         interface Builder {
@@ -77,6 +90,7 @@ class RootBuilder(dependency: ParentComponent) :
             fun view(view: RootView): Builder
 
             fun parentComponent(component: ParentComponent): Builder
+
             fun build(): Component
         }
     }

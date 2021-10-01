@@ -3,6 +3,7 @@ package ir.irezaa.cryptoprice.root.token.item
 import com.uber.rib.core.Bundle
 import com.uber.rib.core.Interactor
 import com.uber.rib.core.RibInteractor
+import ir.irezaa.cryptoprice.root.ToolbarTitleUpdater
 import ir.irezaa.cryptoprice.root.token.data.Token
 import javax.inject.Inject
 
@@ -16,10 +17,15 @@ class TokenItemInteractor : Interactor<TokenItemInteractor.TokenItemPresenter, T
     @Inject
     lateinit var token: Token
 
+    @Inject
+    lateinit var titleUpdater: ToolbarTitleUpdater
+
     override fun didBecomeActive(savedInstanceState: Bundle?) {
         super.didBecomeActive(savedInstanceState)
 
         presenter.setTokenTitle(token.name)
+
+        titleUpdater.updateTitle(token.name)
     }
 
     override fun willResignActive() {

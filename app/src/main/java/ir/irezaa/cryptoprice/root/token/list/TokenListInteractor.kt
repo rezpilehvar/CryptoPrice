@@ -3,6 +3,7 @@ package ir.irezaa.cryptoprice.root.token.list
 import com.uber.rib.core.Bundle
 import com.uber.rib.core.Interactor
 import com.uber.rib.core.RibInteractor
+import ir.irezaa.cryptoprice.root.ToolbarTitleUpdater
 import ir.irezaa.cryptoprice.root.token.data.Token
 import ir.irezaa.cryptoprice.root.token.data.TokenRepository
 import kotlinx.coroutines.*
@@ -22,6 +23,9 @@ class TokenListInteractor : Interactor<TokenListInteractor.TokenListPresenter, T
     @Inject
     lateinit var listener : Listener
 
+    @Inject
+    lateinit var titleUpdater: ToolbarTitleUpdater
+
     override fun didBecomeActive(savedInstanceState: Bundle?) {
         super.didBecomeActive(savedInstanceState)
         presenter.tokenItemPreview {
@@ -35,6 +39,8 @@ class TokenListInteractor : Interactor<TokenListInteractor.TokenListPresenter, T
                 presenter.updateList(tokenList)
             }
         }
+
+        titleUpdater.updateTitle("Token List")
     }
 
     override fun willResignActive() {

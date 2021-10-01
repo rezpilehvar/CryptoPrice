@@ -11,6 +11,7 @@ import javax.inject.Scope
 import dagger.Provides
 import dagger.BindsInstance
 import ir.irezaa.cryptoprice.root.RootView
+import ir.irezaa.cryptoprice.root.ToolbarTitleUpdater
 import ir.irezaa.cryptoprice.root.token.data.TokenListApi
 import ir.irezaa.cryptoprice.root.token.item.TokenItemBuilder
 import ir.irezaa.cryptoprice.root.token.list.TokenListBuilder
@@ -40,6 +41,7 @@ class TokenBuilder(dependency: ParentComponent) :
     interface ParentComponent {
         fun rootView(): RootView
         fun retrofit() : Retrofit
+        fun toolbarTitleUpdate() : ToolbarTitleUpdater
     }
 
 

@@ -3,6 +3,7 @@ package ir.irezaa.cryptoprice.root.token.item
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.uber.rib.core.ViewBuilder
+import ir.irezaa.cryptoprice.root.ToolbarTitleUpdater
 import ir.irezaa.cryptoprice.root.token.item.di.component.DaggerTokenItemComponent
 import ir.irezaa.cryptoprice.root.token.data.Token
 
@@ -26,7 +27,7 @@ class TokenItemBuilder(dependency: ParentComponent) : ViewBuilder<TokenItemView,
   }
 
   interface ParentComponent {
-    // TODO: Define dependencies required from your parent interactor here.
+      fun toolbarTitleUpdater() : ToolbarTitleUpdater
   }
 
 

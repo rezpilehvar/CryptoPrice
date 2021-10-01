@@ -1,15 +1,13 @@
 package ir.irezaa.cryptoprice.root
 
 import android.content.Context
-import android.util.AttributeSet
-import android.view.View
-import android.widget.FrameLayout
+import android.widget.LinearLayout
 
-/**
- * Top level view for {@link RootBuilder.RootScope}.
- */
-class RootView @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyle: Int = 0
-) : FrameLayout(context, attrs, defStyle), RootInteractor.RootPresenter
+class RootView(
+    context: Context
+) : LinearLayout(context), RootInteractor.RootPresenter {
+
+    init {
+        orientation = VERTICAL
+    }
+}

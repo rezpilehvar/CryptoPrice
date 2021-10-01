@@ -3,6 +3,7 @@ package ir.irezaa.cryptoprice.root.token.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.uber.rib.core.ViewBuilder
+import ir.irezaa.cryptoprice.root.ToolbarTitleUpdater
 import ir.irezaa.cryptoprice.root.token.data.TokenListApi
 import ir.irezaa.cryptoprice.root.token.list.di.component.DaggerTokenListComponent
 import ir.irezaa.cryptoprice.root.token.list.view.TokenListView
@@ -30,6 +31,7 @@ class TokenListBuilder(dependency: ParentComponent) :
     interface ParentComponent {
         fun listener(): TokenListInteractor.Listener
         fun provideTokenApi() : TokenListApi
+        fun toolbarTitleUpdater() : ToolbarTitleUpdater
     }
 
     interface BuilderComponent {

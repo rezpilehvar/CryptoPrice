@@ -36,6 +36,8 @@ class TokenRouter(
     }
 
     fun attachTokenItem(token: Token) {
+        detachTokenList()
+
         tokenItemRouter = tokenItemBuilder.build(parentView, token)
 
         attachChild(tokenItemRouter!!)
@@ -59,6 +61,7 @@ class TokenRouter(
     override fun handleBackPress(): Boolean {
         if (tokenItemRouter != null) {
             detachTokenItem()
+            attachTokenList()
             return true
         }
         return false
